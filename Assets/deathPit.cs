@@ -6,20 +6,20 @@ using UnityEngine;
 public class deathPit : MonoBehaviour
 {
     private UIMenu retryButton;
-    [SerializeField] private GameObject boss;
 
     private void Start()
     {
-        retryButton = GameObject.Find("RetryButton").GetComponent<UIMenu>();
+        retryButton = GameObject.Find("Menu").GetComponent<UIMenu>(); // game object where the Retry function is
         
     }
 
-    private void OnTriggerEnter (Collider other)
+   
+    private void OnCollisionEnter2D(Collision2D col) // death pit looks for the boss sprite
     {
-        if (other.gameObject == boss)
+        if (col.gameObject.CompareTag("enemy"))
         {
             retryButton.Retry();
-            Debug.LogError("DeathPit");
         }
     }
 }
+     
