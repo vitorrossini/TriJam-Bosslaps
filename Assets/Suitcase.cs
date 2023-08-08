@@ -20,7 +20,15 @@ public class Suitcase : MonoBehaviour
     private AudioSource slapSound;
     public Button slapButton;
   
-    
+    /// <summary>
+    /// This function is called when the object becomes enabled and active.
+    /// </summary>
+    void OnEnable()
+    {
+        powerUI.SetMaxPower(2f);
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,19 +44,6 @@ public class Suitcase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (charging)
-        {
-            powerUI.SetPower(1.5f);
-        }
-        if (!charging)
-        {
-            Debug.LogError("STOPCHARGINNGGG");
-            
-        }
-       
-           
-        
-        
         if (canSlap)
         {
                 
@@ -77,51 +72,27 @@ public class Suitcase : MonoBehaviour
                 powerUI.SetPower(multiplier);
             
         }
-        
-        
-      
-        
-       
-
-      
-
-
-
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("enemy"))
         {
-            Debug.Log("hit enemy");
-            
+            Debug.Log(collision.gameObject.tag);
         }
         else
         {
             Debug.Log("hit something else");
             
         }
-
-        
     }
 
     public void Slap()
     {
-        
-        
         _animator.Play("player"); 
-        
         Invoke("SuitcaseGo", 0.15f);
         slapButton.interactable = false;
         Debug.Log("pirituber");
-        
-
-       
-        
-
-
-
-
     }
 
     private void SuitcaseGo()
@@ -137,9 +108,6 @@ public class Suitcase : MonoBehaviour
             falling = false;
             raising = false;
             charging = false;
-
-
-
         }
     }
 

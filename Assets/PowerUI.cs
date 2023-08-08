@@ -16,7 +16,7 @@ public class PowerUI : MonoBehaviour
         slider.maxValue = power;
         slider.value = power;
 
-        fill.color = gradient.Evaluate(1f);
+        fill.color = gradient.Evaluate(slider.normalizedValue);
     }
     public void SetPower(float power)
     {
