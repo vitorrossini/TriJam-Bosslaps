@@ -8,9 +8,6 @@ public class UIMenu : MonoBehaviour
     public static bool gameIsPaused = false;
 
     public GameObject pauseMenuUI;
-   
-    private int currentScene;
-   
 
     private void Start()
     {
